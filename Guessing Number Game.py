@@ -10,19 +10,23 @@
 import random
 print("Welcome to the Number Guessing Game!")
 print("I am thinking of a number between 1 and 100")
-difficulty = str(input("Choose a difficulty. Type 'easy' or 'hard': "))
+difficulty = (str(input("Choose a difficulty. Type 'easy' or 'hard': "))).lower()
 
 
 number = random.randint(1,100)  
-if difficulty == 'easy':
-  attempts = 10
-  print(f"You have {attempts} attempts remaining to guess the number")
-elif difficulty == 'hard':
-  attempts = 5
-  print(f"You have {attempts} attempts remaining to guess the number")
-else:
-  print("Invalid")
-  exit()
+flag = False
+while flag == False:
+    if difficulty == 'easy':
+        attempts = 10
+        flag = True
+        print(f"You have {attempts} attempts remaining to guess the number")
+    elif difficulty == 'hard':
+        attempts = 5
+        print(f"You have {attempts} attempts remaining to guess the number")
+        flag = True
+    else:
+        print("Invalid")
+        difficulty = str(input("Choose a difficulty. Type 'easy' or 'hard': "))
 
   
   
