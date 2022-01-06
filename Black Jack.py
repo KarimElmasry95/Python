@@ -27,10 +27,10 @@ def black_jack():
   your_cards = []
   cpu_cards = []
   win = 0
-  play = input("Do you want to play a game of Blackjack? Type 'y' or 'n': ")
-  draw_card = 'n'
+  play = input("Do you want to play a game of Blackjack? Type 'yes' to begin: ").lower()
+  draw_card = 'no'
   
-  if play == "y":
+  if play == "yes":
     clear()
     print(logo)
     your_cards.append(random.choice(cards))
@@ -44,7 +44,7 @@ def black_jack():
     if your_score == 21 and len(your_cards) == 2:
         print("You win with Black Jack !")
     else:
-      draw_card = input("Type 'y' to get another card, type 'n' to pass:  ")
+      draw_card = input("Type 'yes' to get another card, type anything else to pass:  ").lower()
 
     def cpu_turn():
       cpu_cards.append(random.choice(cards))
@@ -76,7 +76,7 @@ def black_jack():
       black_jack()
       
 
-    while draw_card == 'y':
+    while draw_card == 'yes':
       your_cards.append(random.choice(cards))
       your_score = sum(your_cards)
       
@@ -98,7 +98,7 @@ def black_jack():
         print("Your Cards: " + str(your_cards) + ", current score: " + str(your_score))
         print("Compter First Card: " + str(cpu_cards[0]))
 
-      draw_card = input("Type 'y' to get another card, type 'n' to pass:  ")
+      draw_card = input("Type 'yes' to get another card, type 'no' to pass:  ").lower()
     cpu_turn()
     if win == 1:
       black_jack()
