@@ -10,7 +10,7 @@ Flag_B = random.choice(game_data.data)
 game_over = False
 #print(Flag_A)
 #print(Flag_B)
-print(" \n")
+
 
 def winners():
   global winner
@@ -25,11 +25,16 @@ def compare():
   print(art.vs)
   print(f"Compare B: {Flag_B['name']}, a {Flag_B['description']}, from {Flag_B['country']}")
   
-  
+def invalid():
+  global guess
+  while guess != 'a' and guess != 'b':
+    print("Invalid Input! Try again.")
+    guess = input("Who has more followers? Type A or B ").lower()
+
 compare()
 winners()
 guess = input("Who has more followers? Type A or B ").lower()
-
+invalid()
 
 while game_over == False:
   if guess == winner and winner == 'b':
@@ -41,6 +46,7 @@ while game_over == False:
     compare()
     winners()
     guess = input("Who has more followers? Type A or B ").lower()
+    invalid()
   elif guess == winner and winner == 'a':
     score += 1
     Flag_B = random.choice(game_data.data)
@@ -49,6 +55,7 @@ while game_over == False:
     compare()
     winners()
     guess = input("Who has more followers? Type A or B ").lower()
+    invalid()
   else:
     replit.clear()
     print(f"Game Over!  Final score: {score}")
